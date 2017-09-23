@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<div class="container">
+  	<a class="navbar-brand" href="#" routerLink="/">MOMMY</a>
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+  		<span class="navbar-toggler-icon"></span>
+  	</button>
+	
+  	<div class="collapse navbar-collapse" id="navbar">
+  	  <ul class="navbar-nav mr-auto">
+  	   	<li *ngIf="isLoggedIn" class="nav-item">
+  	      <a class="nav-link" href="#" routerLink="/" skipLocationChange>Dashboard</a>
+  	    </li>
+  	  </ul>
+	
+  	  <ul class="navbar-nav ml-auto">
+  	  	<li *ngIf="!isLoggedIn" class="nav-item">
+  	  	  <a class="nav-link" href="#" routerLink="/login" skipLocationChange>Login</a>
+  	  	</li>
+  	  	<li *ngIf="!isLoggedIn" class="nav-item">
+  	  	  <a class="nav-link" href="#" routerLink="/register" skipLocationChange>Register</a>
+  	  	</li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" (click)="onNameClick()">{{loggedInUser}}</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" href="" (click)="onLogoutClick()">Logout</a>
+        </li>
+  	  </ul>
+  	</div>
+  </div>
+</nav>
+<br><br>
