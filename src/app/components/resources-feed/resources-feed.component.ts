@@ -20,7 +20,6 @@ export class ResourcesFeedComponent implements OnInit {
   ngOnInit() {
   	this.contributionsService.getResources().subscribe(resources => {
       this.resources = resources;
-      console.log(this.resources)
       if (this.resources.length>0) this.resource = true;
       else this.resource = false;
 
