@@ -1,3 +1,21 @@
-<p>
-  resources-feed works!
-</p>
+<div class="clearfix">
+  <h1 class="float-left">User</h1>   
+</div>
+<table class="table table-striped" *ngIf="resources; else noresource">
+	<tbody>
+    
+		<tr class="clearfix" *ngFor="let a of resources">
+
+      <td> {{a.user}}</td>
+      <td>{{a.name}}</td>
+      <td>${{a.value}}</td>
+			<td class="float-right">
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<ng-template #noresource>
+	<hr>
+	<h5>There are no resources logged</h5>
+</ng-template>
