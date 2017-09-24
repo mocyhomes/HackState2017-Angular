@@ -5,13 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class ContributionsService {
 	contributions:FirebaseListObservable<any[]>;
-	todos:FirebaseListObservable<any[]>;
+  todos:FirebaseListObservable<any[]>;
+  notifications:FirebaseListObservable<any[]>;
 
   constructor(
   	public af:AngularFireDatabase,
   ) {
   	this.contributions = this.af.list('/');
-  	this.todos         = this.af.list('/todo');
+    this.todos         = this.af.list('/todo');
+    this.notifications = this.af.list('/notifications');
   }
 
   getContributions() {
@@ -20,5 +22,9 @@ export class ContributionsService {
 
   getTodos() {
   	return this.todos;
+  }
+
+  getNotifications(){
+    return this.notifications;
   }
 }
