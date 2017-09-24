@@ -1,0 +1,36 @@
+<div class="clearfix">
+	<button class="btn btn-success float-left mt-2" (click)="toggleShow()"><i class="fa fa-plus"></i> Add a Notification</button>	
+	<h1 class="float-right">Notifications</h1> 
+</div>
+
+<div class="input-group mb-2" *ngIf="show">
+  <span class="input-group-addon">
+    <input type="checkbox" aria-label="Checkbox for following text input" [(ngModel)]="emergency" name="emergency">
+  </span>
+  <span class="input-group-addon bg-danger"><i class="fa fa-bell" style="color:#D9D9D9;"></i></span>
+	<input class=" form-control" type="text" [(ngModel)]="newNoti" name="newNoti" placeholder="This is a very important announcement...">
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button" (click)="addNotification()"><i class="fa fa-check"></i></button>
+  </span>
+</div>
+
+<div *ngIf="notification; else noNotifications">
+	<ul class="list-group" *ngFor="let notification of notifications">
+		<li class="list-group-item clearfix" [ngClass]="{'list-group-item-danger':notification.emergency}">
+			<div class="float-left">
+				{{notification.message}}
+			</div>
+			<a href="#" class="m-1 btn btn-outline-secondary btn-sm" style="position:absolute; right:0.5em;" (click)="removeNotification(notification.$key)"><i class="fa fa-remove"></i></a>
+			<br>
+			<div class="clearfix mt-3">
+				<small class="float-left"><em>-{{notification.owner}}</em></small>
+				<small class="float-right">{{format(notification.date, notification.month, notification.year)}}</small>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<ng-template #noNotifications>
+	<hr>
+	<h5 class="text-right">There are no notifications</h5>
+</ng-template>

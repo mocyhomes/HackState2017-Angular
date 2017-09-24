@@ -1,0 +1,16 @@
+<div *ngIf="hasHouse;else noHouse" class="row">
+	<div class="col-md-5">
+		<app-todo></app-todo>
+	</div>
+	<div class="col-md-7">
+		<app-noti></app-noti>
+	</div>
+</div>
+
+<ng-template #noHouse>
+	<h5>You are not in any houses.</h5>
+	<hr>
+	<h5><a href="#" routerLink="/join-house"   class="text-primary" skipLocationChange>Join a house</a></h5>
+	or
+	<h5><a href="#" routerLink="/create-house" class="text-success" skipLocationChange>Create a new house</a></h5>
+</ng-template>
