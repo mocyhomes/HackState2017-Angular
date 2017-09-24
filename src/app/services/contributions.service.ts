@@ -123,6 +123,10 @@ export class ContributionsService {
   }
 
   getResources(){
-      return this.af.list('/private/houses/-' + this.house + '/contributions/resources/')
+      return this.af.list('/private/houses/-' + this.house + '/contributions/resources/');
+  }
+
+  getChores(){
+    return this.af.list('/private/houses/-' + this.house + '/contributions/time/');
   }
 }

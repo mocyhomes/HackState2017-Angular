@@ -1,3 +1,25 @@
-<p>
-  time-feed works!
-</p>
+<div class="clearfix">
+    <h1 class="float-left">Chore Log</h1>   
+  </div>
+  <table class="table table-striped" *ngIf="chore; else nochore">
+    <tbody>
+      <tr class = "clearfix">
+        <th>User</th>
+        <th>Chore</th>
+        <th>Time</th>
+      </tr>
+      <tr class="clearfix" *ngFor="let a of chores">
+  
+        <td> {{a.user}}</td>
+        <td>{{a.name}}</td>
+        <td>{{a.value}} {{a.unit}}</td>
+        <td class="float-right">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <ng-template #nochore>
+    <hr>
+    <h5>No chores have been logged</h5>
+  </ng-template>
