@@ -8,18 +8,18 @@ import { ContributionsService } from '../../services/contributions.service';
 })
 export class DashboardComponent implements OnInit {
   hasHouse:boolean;
-	houses:any[];
+	house:string;
 
   constructor(
   	private contributionsService:ContributionsService
   ) { }
 
   ngOnInit() {
-  	this.contributionsService.getHouses().subscribe(houses => {
-  		this.houses = houses;
-      if (this.houses.length > 0) {
+  	this.contributionsService.getHouseName().subscribe(house => {
+  		this.house = house.$value;
+      if (this.house.length > 0) {
         this.hasHouse = true;
-        this.contributionsService.setHouse(this.houses[0].$value);
+        this.contributionsService.setHouse(this.house);
       }
       else this.hasHouse = false;
   	});

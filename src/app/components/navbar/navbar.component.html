@@ -10,6 +10,9 @@
   	   	<li *ngIf="isLoggedIn" class="nav-item">
   	      <a class="nav-link" href="#" routerLink="/" skipLocationChange>Dashboard</a>
   	    </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/contributions" skipLocationChange>Contributions</a>
+        </li>
   	  </ul>
 	
   	  <ul class="navbar-nav ml-auto">
@@ -23,7 +26,7 @@
           <a class="nav-link" (click)="onNameClick()">{{loggedInUser}}</a>
         </li>
         <li *ngIf="isLoggedIn" class="nav-item">
-          <a class="nav-link" href="" (click)="onLogoutClick()">Logout</a>
+          <a class="nav-link" href="" (click)="onLogoutClick()" skipLocationChange>Logout</a>
         </li>
   	  </ul>
   	</div>

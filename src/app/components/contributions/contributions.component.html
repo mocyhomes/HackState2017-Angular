@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-6" *ngIf="resources?.length>0;else noResources">
+		<table class="table table-stripped">
+			<thead class="thead-inverse">
+				<tr class="row">
+					<th class="col-md-9">Resources</th>
+					<th class="col-md-3"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="row" *ngFor="let resource of resources">
+					<td class="col-md-9">{{resource.name}}</td>
+					<td class="col-md-3 text-right">{{resource.value}} {{resource.unit}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-md-6" *ngIf="time?.length>0;else noTime">
+		<table class="col-md-6 table table-stripped">
+			<thead class="thead-default">
+				<tr class="row">
+					<th class="col-md-3">Time</th>
+					<th class="col-md-9"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="row" *ngFor="let t of time">
+					<td class="col-md-9">{{t.name}}</td>
+					<td class="col-md-3 text-right">{{t.value}} {{t.unit}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<ng-template #noResources>
+	<hr>
+	<h5>You have no resource contribution.</h5>
+</ng-template>
+
+<ng-template #noTime>
+	<hr>
+	<h5>You have no time contribution.</h5>
+</ng-template>

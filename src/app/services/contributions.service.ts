@@ -7,7 +7,8 @@ import { AuthService } from './auth.service';
 export class ContributionsService {
 	contributions:FirebaseListObservable<any[]>;
 	todos:FirebaseListObservable<any[]>;
-	houses:FirebaseListObservable<any[]>;
+	houseName:FirebaseObjectObservable<any>;
+  notifications:FirebaseListObservable<any[]>
 	uid:string;
   house:string;
 
@@ -18,21 +19,32 @@ export class ContributionsService {
     this.authService.getAuth().subscribe(auth => {
       if (auth)
         this.uid = auth.uid;
-      this.houses = this.af.list('private/users/-' + this.uid + '/houses');
+      this.houseName = this.af.object('private/users/-' + this.uid + '/house');
     });
   }
-
-  getHouses() {
-    console.log(this.house);
-    this.todos = this.af.list('/private/houses/-' + this.house + '/todo');
-  	return this.houses;
+  
+  getHouseName() {
+  	return this.houseName;
   }
 
   setHouse(house) {
     this.house = house;
+    this.todos = this.af.list('/private/houses/-' + this.house + '/todo');
   } 
 
   getTodos() {
-  	return this.todos;
+    return this.af.list('/private/houses/-' + this.house + '/todo');
+  }
+
+  getNotifications(){
+    return this.af.list('/private/houses/-' + this.house + '/notifications');
+  }
+
+  getResources() {
+    return this.af.list('/private/users/-' + this.uid + '/contributions/resources');
+  }
+
+  getTime() {
+    return this.af.list('/private/users/-' + this.uid + '/contributions/time');
   }
 }

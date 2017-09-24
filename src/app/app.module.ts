@@ -25,6 +25,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NotiComponent } from './components/noti/noti.component';
+import { ContributionsComponent } from './components/contributions/contributions.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB0ss9K-oiz2p_CyN0UfQtAea7srl9PB8I",
@@ -34,9 +35,10 @@ export const firebaseConfig = {
 };
 
 const appRoutes: Routes = [
-  { path: ''        , component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'login'   , component: LoginComponent                              },
-  { path: 'register', component: RegisterComponent                           }
+  { path: ''             , component: DashboardComponent    , canActivate:[AuthGuard] },
+  { path: 'contributions', component: ContributionsComponent, canActivate:[AuthGuard] },
+  { path: 'login'        , component: LoginComponent                              },
+  { path: 'register'     , component: RegisterComponent                           }
 ];
 
 @NgModule({
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     SidebarComponent,
     TodoComponent,
-    NotiComponent
+    NotiComponent,
+    ContributionsComponent
   ],
   imports: [
     BrowserModule,
