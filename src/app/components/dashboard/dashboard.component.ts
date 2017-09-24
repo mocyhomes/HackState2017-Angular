@@ -15,10 +15,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  	console.log('hello');
   	this.contributionsService.getContributions().subscribe(contributions => {
   		this.contributions = contributions;
-  		console.log(contributions);
   	});
   }
 

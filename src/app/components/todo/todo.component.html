@@ -1,0 +1,10 @@
+<h1 class="center">TODO</h1>
+<div *ngIf="todo; else notodo">
+	<ul *ngFor="let a of todos">
+		<li>{{a.$value}}</li>
+	</ul>
+</div>
+<ng-template #notodo>
+	<hr>
+	<h5>There are nothing to do</h5>
+</ng-template>

@@ -23,6 +23,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { NotiComponent } from './components/noti/noti.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB0ss9K-oiz2p_CyN0UfQtAea7srl9PB8I",
@@ -44,7 +46,9 @@ const appRoutes: Routes = [
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    TodoComponent,
+    NotiComponent
   ],
   imports: [
     BrowserModule,
