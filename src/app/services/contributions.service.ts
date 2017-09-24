@@ -67,6 +67,11 @@ export class ContributionsService {
     this.af.list('/private/houses/-' + this.house + '/todo').push(newToDo);
   }
 
+  getRoomie() {
+    console.log(this.house);
+return this.af.list('/private/houses/-' + this.house + '/users');
+}
+
   addContribution(todo, type, value, unit) {
     var newContribution = {
       name: todo,
