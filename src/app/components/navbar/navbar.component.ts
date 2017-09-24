@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -13,19 +13,19 @@ export class NavbarComponent implements OnInit {
 	loggedInUser:string;
 
   constructor(
-  	// private authService:AuthService,
+  	private authService:AuthService,
   	private router:Router,
   ) { }
 
   ngOnInit() {
-  	// this.authService.getAuth().subscribe(auth => {
-  	// 	if (auth) {
-  	// 		this.isLoggedIn = true;
-  	// 		this.loggedInUser = auth.email;
-  	// 	} else {
-  	// 		this.isLoggedIn = false;
-  	// 	}
-  	// });
+  	this.authService.getAuth().subscribe(auth => {
+  		if (auth) {
+  			this.isLoggedIn = true;
+  			this.loggedInUser = auth.email;
+  		} else {
+  			this.isLoggedIn = false;
+  		}
+  	});
   }
 
   onNameClick() {
@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
-  	// this.authService.logout();
+  	this.authService.logout();
   	this.router.navigate(['/login']);
   }
 
