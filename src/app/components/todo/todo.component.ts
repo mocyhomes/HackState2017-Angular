@@ -17,9 +17,9 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
   	this.contributionsService.getTodos().subscribe(todos => {
   		this.todos = todos;
+      console.log(todos);
   		if (todos) this.todo = true;
   		else this.todo = false;
   	});
   }
-
 }
