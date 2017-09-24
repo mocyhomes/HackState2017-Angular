@@ -50,7 +50,14 @@ export class ContributionsService {
   setHouse(house) {
     this.house = house;
     this.todos = this.af.list('/private/houses/-' + this.house + '/todo');
-  } 
+  }
+
+  joinHouse(house) {
+    this.house = house;
+    if (!this.displayName) this.displayName = this.authService.displayName;
+    this.af.object('/private/houses/-' + house + '/users/' + this.uid).set(this.displayName);
+    this.af.object('/private/users/-' + this.uid + '/house').set(house);
+  }
 
   getTodos() {
     return this.af.list('/private/houses/-' + this.house + '/todo');
