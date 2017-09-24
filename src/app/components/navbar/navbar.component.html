@@ -10,8 +10,15 @@
   	   	<li *ngIf="isLoggedIn" class="nav-item">
   	      <a class="nav-link" href="#" routerLink="/" skipLocationChange>Dashboard</a>
   	    </li>
-        <li *ngIf="isLoggedIn" class="nav-item">
-          <a class="nav-link" href="#" routerLink="/contributions" skipLocationChange>Contributions</a>
+        <li *ngIf="isLoggedIn" class="nav dropdown">
+          <a class="nav-link" routerLink="/contributions" skipLocationChange>Contributions</a>
+          <a class="nav-link dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" routerLink="/resources-feed" class="dropdown-item" skipLocationChange>Resources Feed</a>
+            <a href="#" routerLink="/time-feed" class="dropdown-item" skipLocationChange>Time Feed</a>
+          </div>
         </li>
   	  </ul>
 	
@@ -28,7 +35,7 @@
         <li *ngIf="isLoggedIn && hasHouse" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{house}}</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item"><i class="fa fa-address-book"></i> Roommies</a>
+            <a href="#" routerLink="roommates" class="dropdown-item"><i class="fa fa-address-book" skipLocationChange></i> Roommies</a>
             <a href="#" class="dropdown-item"><i class="fa fa-hand-spock-o"></i> Leave House</a>
           </div>
         </li>

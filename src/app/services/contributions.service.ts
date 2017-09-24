@@ -42,7 +42,6 @@ export class ContributionsService {
       }
     };
     if (!this.displayName) this.displayName = this.authService.displayName;
-    console.log(this.displayName);
     house.users[this.uid] = this.displayName;
     this.af.object('/private/houses/-' + name).set(house);
     this.af.object('/private/users/-' + this.uid + '/house').set(name);
@@ -61,14 +60,17 @@ export class ContributionsService {
     this.af.list('/private/houses/-' + this.house + '/todo').push(newToDo);
   }
 
-  convertToDotoContribution(todo, type, value, unit) {
+  addContribution(todo, type, value, unit) {
     var newContribution = {
       name: todo,
       value: value,
-      unit: unit 
+      unit: unit ,
+      user: {
+      }
     }
-    console.log({type:type, new:newContribution});
-    this.af.list('/private/users/-' + this.uid + '/contributions/' + type).push(newContribution);
+    if (!this.displayName) this.displayName = this.authService.displayName;
+    newContribution.user[this.uid] = this.displayName;
+    this.af.list('/private/houses/-' + this.house + '/contributions/' + type).push(newContribution);
   }
 
   removeToDo(key) {
@@ -99,8 +101,8 @@ export class ContributionsService {
     this.af.list('/private/houses/-' + this.house + '/notifications/' + key).remove();
   }
 
-  getResources() {
-    return this.af.list('/private/users/-' + this.uid + '/contributions/resources');
+  getSummary() {
+    return this.af.object('/private/users/-' + this.uid + '/summary');
   }
 
   getTime() {

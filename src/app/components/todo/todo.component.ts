@@ -48,7 +48,7 @@ export class TodoComponent implements OnInit {
     var that = this;
     document.getElementById('doneButton').onclick = function() {
       if (that.contributionType  && that.contributionUnit) {
-        that.contributionsService.convertToDotoContribution(todo, that.contributionType, that.contributionValue, that.contributionUnit);
+        that.contributionsService.addContribution(todo, that.contributionType, that.contributionValue, that.contributionUnit);
         that.removeToDo(key);
       }
       else {

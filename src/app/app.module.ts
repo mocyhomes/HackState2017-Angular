@@ -29,6 +29,9 @@ import { ContributionsComponent } from './components/contributions/contributions
 import { JoinHouseComponent } from './components/join-house/join-house.component';
 import { CreateHouseComponent } from './components/create-house/create-house.component';
 import { ChartsComponent } from './components/charts/charts.component';
+import { ResourcesFeedComponent } from './components/resources-feed/resources-feed.component';
+import { TimeFeedComponent } from './components/time-feed/time-feed.component';
+import { RoommatesComponent } from './components/roommates/roommates.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB0ss9K-oiz2p_CyN0UfQtAea7srl9PB8I",
@@ -38,12 +41,15 @@ export const firebaseConfig = {
 };
 
 const appRoutes: Routes = [
-  { path: ''             , component: DashboardComponent    , canActivate:[AuthGuard] },
-  { path: 'contributions', component: ContributionsComponent, canActivate:[AuthGuard] },
-  { path: 'join-house'   , component: JoinHouseComponent    , canActivate:[AuthGuard] },
-  { path: 'create-house' , component: CreateHouseComponent  , canActivate:[AuthGuard] },
-  { path: 'login'        , component: LoginComponent                              },
-  { path: 'register'     , component: RegisterComponent                           }
+  { path: ''              , component: DashboardComponent    , canActivate:[AuthGuard] },
+  { path: 'contributions' , component: ContributionsComponent, canActivate:[AuthGuard] },
+  { path: 'join-house'    , component: JoinHouseComponent    , canActivate:[AuthGuard] },
+  { path: 'create-house'  , component: CreateHouseComponent  , canActivate:[AuthGuard] },
+  { path: 'resources-feed', component: ResourcesFeedComponent, canActivate:[AuthGuard] },
+  { path: 'time-feed'     , component: TimeFeedComponent     , canActivate:[AuthGuard] },
+  { path: 'roommates'     , component: RoommatesComponent    , canActivate:[AuthGuard] },
+  { path: 'login'         , component: LoginComponent                                  },
+  { path: 'register'      , component: RegisterComponent                               }
 ];
 
 @NgModule({
@@ -59,7 +65,10 @@ const appRoutes: Routes = [
     ContributionsComponent,
     JoinHouseComponent,
     CreateHouseComponent,
-    ChartsComponent
+    ChartsComponent,
+    ResourcesFeedComponent,
+    TimeFeedComponent,
+    RoommatesComponent
   ],
   imports: [
     BrowserModule,
