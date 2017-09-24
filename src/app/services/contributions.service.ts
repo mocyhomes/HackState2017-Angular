@@ -121,4 +121,8 @@ export class ContributionsService {
   getTime() {
     return this.af.list('/private/users/-' + this.uid + '/contributions/time');
   }
+
+  getResources(){
+      return this.af.list('/private/houses/-' + this.house + '/contributions/resources/')
+  }
 }

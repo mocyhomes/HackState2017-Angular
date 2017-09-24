@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContributionsService } from '../../services/contributions.service';
 
 @Component({
   selector: 'app-resources-feed',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourcesFeedComponent implements OnInit {
 
-  constructor() { }
+  resources:any[];
+  resource:boolean;
+
+  
+
+  constructor(
+    private contributionsService:ContributionsService,
+  ) { }
 
   ngOnInit() {
-  }
+  	this.contributionsService.getResources().subscribe(resources => {
+      this.resources = resources;
+      console.log(this.resources)
+      if (this.resources.length>0) this.resource = true;
+      else this.resource = false;
+
+    });
+  } // end of init
+
+
 
 }
