@@ -35,6 +35,11 @@ export class ContributionsService {
     return this.af.object('/private/houses/-' + name).take(1);
   }
 
+  getHouseContributions(name){
+    console.log("housename " + name);
+    return this.af.object('/private/houses/-' + name + '/contributions');
+  }
+
   createHouse(name) {
     var house = {
       name: name,

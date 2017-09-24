@@ -10,6 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 // Others
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ChartsModule } from 'ng2-charts';
 
 //Service Imports
 import { AuthService } from './services/auth.service';
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
     FormsModule,
     FlashMessagesModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    ChartsModule
   ],
   providers: [
     AngularFireAuth,
