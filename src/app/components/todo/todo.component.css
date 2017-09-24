@@ -1,0 +1,11 @@
+.icon-complete { font-size:1.8em; color: green;  }
+.icon-delete { font-size:1.8em; color: #AF1919;  }
+
+.switch-icon > .fa + .fa,
+.switch-icon:hover > .fa {
+  display: none;
+}
+.switch-icon:hover > .fa + .fa {
+  display: inherit;
+}
+
