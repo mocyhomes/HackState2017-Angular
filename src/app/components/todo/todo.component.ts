@@ -9,17 +9,23 @@ import { ContributionsService } from '../../services/contributions.service';
 export class TodoComponent implements OnInit {
 	todo:boolean;
 	todos: any[];
+	show:boolean;
 
   constructor(
   	private contributionsService:ContributionsService
   ) { }
 
   ngOnInit() {
+		this.show = false;
   	this.contributionsService.getTodos().subscribe(todos => {
   		this.todos = todos;
   		if (todos) this.todo = true;
   		else this.todo = false;
   	});
-  }
+	}
+	
+	toggleShow() {
+		this.show = !this.show;
+	}
 
 }
