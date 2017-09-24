@@ -1,9 +1,13 @@
 <div class="clearfix">
-  <h1 class="float-left">User</h1>   
+  <h1 class="float-left">Resource Log</h1>   
 </div>
 <table class="table table-striped" *ngIf="resources; else noresource">
 	<tbody>
-    
+    <tr class = "clearfix">
+      <th>User</th>
+      <th>Contribution</th>
+      <th>Value</th>
+    </tr>
 		<tr class="clearfix" *ngFor="let a of resources">
 
       <td> {{a.user}}</td>
