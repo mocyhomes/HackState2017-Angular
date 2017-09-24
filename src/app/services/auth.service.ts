@@ -61,6 +61,17 @@ export class AuthService {
         this.af.object('/private/users/-' + auth.uid + '/displayName').set(name);
         this.af.object('/private/users/-' + auth.uid + '/email'      ).set(email);
         this.af.object('/private/users/-' + auth.uid + '/username'   ).set(username);
+        var summary = {
+          resources: {
+            value: 0,
+            unit: null,
+          },
+          time: {
+            value: 0,
+            unit: null,
+          }
+        }
+        this.af.object('/private/users/-' + auth.uid + '/summary'   ).set(summary);
       }    
     });
   }

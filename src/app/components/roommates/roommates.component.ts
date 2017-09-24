@@ -6,19 +6,19 @@ import { ContributionsService } from '../../services/contributions.service';
   styleUrls: ['./roommates.component.css']
 })
 export class RoommatesComponent implements OnInit {
-  roomie:boolean;
-	roomies:any[];
+  roommie:boolean;
+	roommies:any[];
   constructor(	private contributionsService:ContributionsService) { }
 
   ngOnInit() 
   {
-  	this.contributionsService.getRoomie().subscribe(roomies => {
-  		this.roomies = roomies;
-  		if (roomies.length > 0) this.roomie = true;
-      else this.roomie = false;
-      console.log(this.roomies);
-      console.log(roomies);
-  	});
+    this.contributionsService.getHouseName().subscribe(houseName => {
+      this.contributionsService.getRoommies(houseName.$value).subscribe(roommies => {
+        this.roommies = roommies;
+        if (this.roommies.length > 0) this.roommie = true;
+        else this.roommie = false;
+      });
+    });
   }
 
 

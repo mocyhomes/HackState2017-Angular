@@ -15,6 +15,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ContributionsService } from './services/contributions.service';
+import { CalculationsService  } from './services/calculations.service';
 
 // Component Imports
 import { AppComponent } from './app.component';
@@ -22,7 +23,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NotiComponent } from './components/noti/noti.component';
 import { ContributionsComponent } from './components/contributions/contributions.component';
@@ -59,7 +59,6 @@ const appRoutes: Routes = [
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    SidebarComponent,
     TodoComponent,
     NotiComponent,
     ContributionsComponent,
@@ -82,7 +81,8 @@ const appRoutes: Routes = [
     AngularFireDatabase,
     AuthService,
     AuthGuard,
-    ContributionsService
+    ContributionsService,
+    CalculationsService
   ],
   bootstrap: [AppComponent]
 })

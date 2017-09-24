@@ -23,7 +23,7 @@ export class JoinHouseComponent implements OnInit {
   onSubmit() {
     this.contributionsService.checkHouseName(this.houseName).subscribe(res => {
       if (res.name == null) {
-        this.flashMessagesService.show('This house name is already taken.', { cssClass:'alert-danger', timeout:3000 });
+        this.flashMessagesService.show('This house does not exists.', { cssClass:'alert-danger', timeout:3000 });
         this.router.navigate(['/join-house']);
       } else {
       	this.contributionsService.joinHouse(this.houseName);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { CalculationsService } from './calculations.service';
 import 'rxjs/add/operator/take';
 
 @Injectable()
@@ -16,7 +17,8 @@ export class ContributionsService {
 
   constructor(
   	private af:AngularFireDatabase,
-  	private authService:AuthService
+  	private authService:AuthService,
+    private calculationsService:CalculationsService
   ) {
     this.authService.getAuth().subscribe(auth => {
       if (auth) {
@@ -67,21 +69,20 @@ export class ContributionsService {
     this.af.list('/private/houses/-' + this.house + '/todo').push(newToDo);
   }
 
-  getRoomie() {
-    console.log(this.house);
-return this.af.list('/private/houses/-' + this.house + '/users');
-}
+  getRoommies(houseName) {
+    return this.af.list('/private/houses/-' + houseName + '/users');
+  }
 
   addContribution(todo, type, value, unit) {
+    this.calculationsService.updateSummary(this.uid, type, value, unit);
+    if (!this.displayName) this.displayName = this.authService.displayName;
     var newContribution = {
       name: todo,
       value: value,
       unit: unit ,
-      user: {
-      }
+      user: this.displayName,
+      uid: this.uid
     }
-    if (!this.displayName) this.displayName = this.authService.displayName;
-    newContribution.user[this.uid] = this.displayName;
     this.af.list('/private/houses/-' + this.house + '/contributions/' + type).push(newContribution);
   }
 
