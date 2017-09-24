@@ -1,4 +1,27 @@
-<h1 class="center">TODO</h1>
+<div class="row">
+	<span class="pull-left" style="margin-right: calc(48%);">
+			<h1>TO-DO</h1> 
+	</span>
+	<button class="right" (click)="toggleShow()" ng-click="showDiv = !showDiv" data-toggle="modal" data-target="#exampleModal"><i class="icon-complete fa fa-plus" aria-hidden="true"></i> Add a TO-DO</button>
+	<div *ngIf="show;" >
+			<div id="addModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close" style="float:left;" (click)="toggleShow()">&times;</span>
+					<div class="container text-center" style="float:right;">
+						<form>
+							<div class="row center">
+								<h2>To-do</h2>
+							</div>
+							<div class="row center">
+								<input type="text" name="name">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
 <div *ngIf="todo; else notodo">
 	<ul id="check-list-box" class="list-group checked-list-box" *ngFor="let a of todos"> 
 		<li class="list-group-item">
@@ -18,5 +41,5 @@
 </div>
 <ng-template #notodo>
 	<hr>
-	<h5>There are nothing to do</h5>
+	<h5>There are no to-dos</h5>
 </ng-template>
