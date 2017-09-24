@@ -26,6 +26,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NotiComponent } from './components/noti/noti.component';
 import { ContributionsComponent } from './components/contributions/contributions.component';
+import { JoinHouseComponent } from './components/join-house/join-house.component';
+import { CreateHouseComponent } from './components/create-house/create-house.component';
+import { ChartsComponent } from './components/charts/charts.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB0ss9K-oiz2p_CyN0UfQtAea7srl9PB8I",
@@ -37,6 +40,8 @@ export const firebaseConfig = {
 const appRoutes: Routes = [
   { path: ''             , component: DashboardComponent    , canActivate:[AuthGuard] },
   { path: 'contributions', component: ContributionsComponent, canActivate:[AuthGuard] },
+  { path: 'join-house'   , component: JoinHouseComponent    , canActivate:[AuthGuard] },
+  { path: 'create-house' , component: CreateHouseComponent  , canActivate:[AuthGuard] },
   { path: 'login'        , component: LoginComponent                              },
   { path: 'register'     , component: RegisterComponent                           }
 ];
@@ -51,7 +56,10 @@ const appRoutes: Routes = [
     SidebarComponent,
     TodoComponent,
     NotiComponent,
-    ContributionsComponent
+    ContributionsComponent,
+    JoinHouseComponent,
+    CreateHouseComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,

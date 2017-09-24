@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   	this.contributionsService.getHouseName().subscribe(house => {
   		this.house = house.$value;
-      if (this.house.length > 0) {
+      if (this.house && this.house.length > 0) {
         this.hasHouse = true;
         this.contributionsService.setHouse(this.house);
       }

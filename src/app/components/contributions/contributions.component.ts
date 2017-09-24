@@ -7,7 +7,10 @@ import { ContributionsService } from '../../services/contributions.service';
   styleUrls: ['./contributions.component.css']
 })
 export class ContributionsComponent implements OnInit {
-	resources:any[];
+  balance:{
+    resources:number;
+    time:number;
+  };
 	time:any[];
 
 
@@ -16,12 +19,12 @@ export class ContributionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  	this.contributionsService.getResources().subscribe(resources => {
-  		this.resources = resources;
-  	});
-  	this.contributionsService.getTime().subscribe(time => {
-  		this.time = time;
-  	});
+  	// this.contributionsService.getResources().subscribe(resources => {
+  	// 	this.resources = resources;
+  	// });
+  	// this.contributionsService.getTime().subscribe(time => {
+  	// 	this.time = time;
+  	// });
   }
 
 }

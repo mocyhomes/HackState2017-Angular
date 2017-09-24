@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class ContributionsService {
@@ -10,6 +11,7 @@ export class ContributionsService {
 	houseName:FirebaseObjectObservable<any>;
   notifications:FirebaseListObservable<any[]>
 	uid:string;
+  displayName:string;
   house:string;
 
   constructor(
@@ -17,14 +19,33 @@ export class ContributionsService {
   	private authService:AuthService
   ) {
     this.authService.getAuth().subscribe(auth => {
-      if (auth)
+      if (auth) {
         this.uid = auth.uid;
+        this.displayName = auth.displayName;
+      }
       this.houseName = this.af.object('private/users/-' + this.uid + '/house');
     });
   }
   
   getHouseName() {
   	return this.houseName;
+  }
+
+  checkHouseName(name) {
+    return this.af.object('/private/houses/-' + name).take(1);
+  }
+
+  createHouse(name) {
+    var house = {
+      name: name,
+      users: {
+      }
+    };
+    if (!this.displayName) this.displayName = this.authService.displayName;
+    console.log(this.displayName);
+    house.users[this.uid] = this.displayName;
+    this.af.object('/private/houses/-' + name).set(house);
+    this.af.object('/private/users/-' + this.uid + '/house').set(name);
   }
 
   setHouse(house) {
@@ -36,8 +57,46 @@ export class ContributionsService {
     return this.af.list('/private/houses/-' + this.house + '/todo');
   }
 
+  addToDo(newToDo) {
+    this.af.list('/private/houses/-' + this.house + '/todo').push(newToDo);
+  }
+
+  convertToDotoContribution(todo, type, value, unit) {
+    var newContribution = {
+      name: todo,
+      value: value,
+      unit: unit 
+    }
+    console.log({type:type, new:newContribution});
+    this.af.list('/private/users/-' + this.uid + '/contributions/' + type).push(newContribution);
+  }
+
+  removeToDo(key) {
+    this.af.list('/private/houses/-' + this.house + '/todo/' + key).remove();
+  }
+
   getNotifications(){
     return this.af.list('/private/houses/-' + this.house + '/notifications');
+  }
+
+  addNotification(notiMessage, emergency) {
+    this.authService.getAuth().subscribe(auth => {
+      var date = new Date();
+      var owner = auth.displayName;
+      var newNoti = {
+        message: notiMessage,
+        emergency: emergency,
+        date: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        owner: owner
+      }
+      this.af.list('/private/houses/-' + this.house + '/notifications/').push(newNoti);
+    });
+  }
+
+  removeNotification(key) {
+    this.af.list('/private/houses/-' + this.house + '/notifications/' + key).remove();
   }
 
   getResources() {

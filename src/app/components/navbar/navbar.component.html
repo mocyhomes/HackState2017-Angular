@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 	<div class="container">
-  	<a class="navbar-brand" href="#" routerLink="/">MOMMY</a>
+  	<a class="navbar-brand" href="#" routerLink="/" skipLocationChange>MOMMY</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
   		<span class="navbar-toggler-icon"></span>
   	</button>
@@ -25,8 +25,15 @@
         <li *ngIf="isLoggedIn" class="nav-item">
           <a class="nav-link" (click)="onNameClick()">{{loggedInUser}}</a>
         </li>
+        <li *ngIf="isLoggedIn && hasHouse" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{house}}</a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item"><i class="fa fa-address-book"></i> Roommies</a>
+            <a href="#" class="dropdown-item"><i class="fa fa-hand-spock-o"></i> Leave House</a>
+          </div>
+        </li>
         <li *ngIf="isLoggedIn" class="nav-item">
-          <a class="nav-link" href="" (click)="onLogoutClick()" skipLocationChange>Logout</a>
+          <a class="nav-link" href="" routerLink="/login" (click)="onLogoutClick()" skipLocationChange>Logout</a>
         </li>
   	  </ul>
   	</div>

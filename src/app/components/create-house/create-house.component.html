@@ -1,0 +1,34 @@
+<div class="card">
+	<div class="card-block">
+		<h1 class="text-center">House Resgistration</h1>
+		<form class="mx-2" (submit)="onSubmit()">
+			<div class="form-group">
+				<label>House Name*</label>
+				<input type="text" class="form-control" [(ngModel)]="houseName" name="houseName" required>
+			</div>
+
+  		<div class="form-row">
+  		  <div class="form-group col-md-6">
+  		    <label class="col-form-label">Invite</label>
+  		    <input [(ngModel)]="invitee0" name="invitee0" type="text" class="form-control" placeholder="example@gmail.com">
+  		  </div>
+  		  <div class="form-group col-md-6">
+  		    <label class="col-form-label">Invite</label>
+  		    <input [(ngModel)]="invitee1" name="invitee1" type="text" class="form-control" placeholder="thisismyawesomeusername">
+  		  </div>
+  		</div>
+
+  		<div class="form-row">
+  		  <div class="form-group col-md-6">
+  		    <label class="col-form-label">Invite</label>
+  		    <input [(ngModel)]="invitee2" name="invitee2" type="text" class="form-control" placeholder="harrylightningporter31071997">
+  		  </div>
+  		  <div class="form-group col-md-6">
+  		    <label class="col-form-label">Invite</label>
+  		    <input [(ngModel)]="invitee3" name="invitee3" type="text" class="form-control" placeholder="bb-8@star.wars">
+  		  </div>
+  		</div>
+			<input type="submit" id="submitButton" class="btn btn-block mb-2" value="Create">
+		</form>
+	</div>
+</div>
